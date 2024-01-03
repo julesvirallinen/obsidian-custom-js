@@ -9,7 +9,7 @@ interface CustomJSSettings {
   startupScriptNames: string[];
   registeredInvocableScriptNames: string[];
 }
-
+dsfdfasf
 const DEFAULT_SETTINGS: CustomJSSettings = {
   jsFiles: '',
   jsFolder: '',
