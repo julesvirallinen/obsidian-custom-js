@@ -9,7 +9,7 @@ interface CustomJSSettings {
   startupScriptNames: string[];
   registeredInvocableScriptNames: string[];
 }
-
+dsfdfasf
 const DEFAULT_SETTINGS: CustomJSSettings = {
   jsFiles: '',
   jsFolder: '',
@@ -84,7 +84,7 @@ export default class CustomJS extends Plugin {
 
     try {
       await scriptObj.invoke();
-    } catch(e) {
+    } catch (e) {
       const message = `Script '${scriptName}' failed`;
       new Notice(`${message}\n${e.message}\nSee error console for more details`);
       console.error(message);
@@ -128,7 +128,7 @@ export default class CustomJS extends Plugin {
   }
 
   async loadClasses() {
-    window.customJS = { 
+    window.customJS = {
       obsidian,
       state: window.customJS?.state ?? {}
     };
@@ -289,12 +289,12 @@ class CustomJSSettingsTab extends PluginSettingTab {
         .setButtonText('Register invocable script')
         .setCta()
         .onClick(async () => {
-            const modal = new InvocableScriptSelectorModal(this.app, this.plugin.settings.registeredInvocableScriptNames);
-            const scriptName = await modal.promise;
-            if (scriptName) {
-              this.plugin.registerInvocableScript(scriptName);
-              this.display();
-            }
+          const modal = new InvocableScriptSelectorModal(this.app, this.plugin.settings.registeredInvocableScriptNames);
+          const scriptName = await modal.promise;
+          if (scriptName) {
+            this.plugin.registerInvocableScript(scriptName);
+            this.display();
+          }
         })
       );
 
@@ -322,18 +322,18 @@ class CustomJSSettingsTab extends PluginSettingTab {
     }
 
     new Setting(this.containerEl)
-    .addButton(cb => cb
-      .setButtonText('Add startup script')
-      .setCta()
-      .onClick(async () => {
+      .addButton(cb => cb
+        .setButtonText('Add startup script')
+        .setCta()
+        .onClick(async () => {
           const modal = new InvocableScriptSelectorModal(this.app, this.plugin.settings.startupScriptNames);
           const scriptName = await modal.promise;
           if (scriptName) {
             this.plugin.addStartupScript(scriptName);
             this.display();
           }
-      })
-    );
+        })
+      );
   }
 }
 
